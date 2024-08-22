@@ -18,7 +18,7 @@ const LapCard = ({ lapNumber, duration, startTimestamp, endTimestamp }) => {
   };
 
   return (
-    <div className="bg-gray-100 p-2 mb-2 rounded">
+    <div className="bg-coral p-2 mb-2 rounded">
       <div className="flex justify-between">
         {isEditing ? (
           <input
@@ -27,7 +27,7 @@ const LapCard = ({ lapNumber, duration, startTimestamp, endTimestamp }) => {
             onChange={handleLabelChange}
             onBlur={handleLabelBlur}
             autoFocus
-            className="border rounded px-1"
+            className="border rounded px-1 text-lg font-semibold bg-dark-brown"
           />
         ) : (
           <span onClick={handleLabelClick} className="cursor-pointer">

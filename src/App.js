@@ -81,29 +81,38 @@ const App = () => {
   });
 
   return (
-    <div className="container mx-auto p-4 max-w-md">
-      <LocalTime />
-      <Timer
-        time={time}
-        currentLapTime={currentLapTime}
-        isRunning={isRunning}
-        onStart={handleStart}
-        onStop={handleStop}
-        onLap={handleLap}
-        onReset={handleReset}
-      />
-      <LapList laps={laps} />
-      {laps.length > 0 && !isRunning && (
-        <PDFDownloadLink document={<LapsPDF laps={laps} />} fileName="lap_times.pdf">
-          {({ blob, url, loading, error }) =>
-            loading ? 'Loading document...' : (
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-                Export PDF
-              </button>
-            )
-          }
-        </PDFDownloadLink>
-      )}
+    <div className="bg-deep-brown min-h-screen text-cream font-sans">
+      <div className="container mx-auto p-4 max-w-md flex flex-col space-y-6">
+        <div className="flex flex-col items-center">
+          <h1 className="text-3xl font-bold text-cream mb-6">My Timing App</h1>
+          <LocalTime />
+        </div>
+        <div className="bg-dark-brown rounded-lg p-4 shadow-md">
+          <Timer
+            time={time}
+            currentLapTime={currentLapTime}
+            isRunning={isRunning}
+            onStart={handleStart}
+            onStop={handleStop}
+            onLap={handleLap}
+            onReset={handleReset}
+          />
+        </div>
+        <div className="bg-dark-brown rounded-lg p-4 shadow-md">
+          <LapList laps={laps} />
+        </div>
+        {laps.length > 0 && !isRunning && (
+          <PDFDownloadLink document={<LapsPDF laps={laps} />} fileName="lap_times.pdf">
+            {({ blob, url, loading, error }) =>
+              loading ? 'Loading document...' : (
+                <button className="bg-coral hover:bg-rust text-cream font-bold py-2 px-4 rounded mt-4 w-full transition duration-300 ease-in-out">
+                  Export PDF
+                </button>
+              )
+            }
+          </PDFDownloadLink>
+        )}
+      </div>
     </div>
   );
 };

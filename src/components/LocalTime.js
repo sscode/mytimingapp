@@ -22,8 +22,9 @@ const LocalTime = () => {
   };
 
   return (
-    <div className="text-xl font-semibold mb-4">
-      {formatTime(currentTime)}
+    <div className="text-center">
+      <h2 className="text-xl font-semibold mb-2 text-cream">Local Time</h2>
+      <p className="text-rust">{formatTime(currentTime)}</p>
     </div>
   );
 };
